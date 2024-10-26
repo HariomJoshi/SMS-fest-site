@@ -9,8 +9,8 @@ html {
 
 @font-face {
   font-family: "Brusher";
-  src: url("/path-to-your-font/Brusher.woff2") format("woff2"),
-    url("/path-to-your-font/Brusher.woff") format("woff");
+  /* src: url("/path-to-your-font/Brusher.woff2") format("woff2"),
+    url("/path-to-your-font/Brusher.woff") format("woff"); */
   font-weight: normal;
   font-style: normal;
 }

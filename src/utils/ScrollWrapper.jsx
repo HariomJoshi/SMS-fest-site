@@ -6,6 +6,7 @@ const ScrollWrapper = ({ children }) => {
   const scrollRef = useRef(null);
 
   useEffect(() => {
+    if (!scrollRef.current) return;
     const scroll = new LocomotiveScroll({
       el: scrollRef.current,
       smooth: true,
@@ -22,7 +23,11 @@ const ScrollWrapper = ({ children }) => {
   }, []);
 
   return (
-    <div data-scroll-container ref={scrollRef} className="overflow-hidden">
+    <div
+      data-scroll-container
+      ref={scrollRef}
+      className="overflow-hidden min-h-screen"
+    >
       {children}
     </div>
   );

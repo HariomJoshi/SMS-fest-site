@@ -9,17 +9,20 @@ import OligopolyComponent from "./components/OligopolyComponent";
 import EventGrid from "./components/EventGrid";
 import useSmoothScroll from "./utils/useSmoothScroll";
 import ScrollWrapper from "./utils/ScrollWrapper";
+import { useRef } from "react";
 
 function App() {
   useSmoothScroll();
+  const oligopolyRef = useRef(null);
+  const monopolyRef = useRef(null);
   return (
     <div className="font-sans">
+      <Header />
       <ScrollWrapper>
-        <Header />
-        <HeroSection />
-        <MonopolySection />
+        <HeroSection oligopolyRef={oligopolyRef} monopolyRef={monopolyRef} />
+        <MonopolySection monopolyRef={monopolyRef} />
         <EventsRegistrationSection />
-        <OligopolyComponent />
+        <OligopolyComponent oligopolyRef={oligopolyRef} />
         <EventGrid />
         <Footer />
       </ScrollWrapper>

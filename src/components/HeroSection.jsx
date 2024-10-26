@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import smsImage from "../assets/components/smsImg.jpeg";
 import mnnitImage from "../assets/components/mnnitImage.jpg";
+import { useNavigate } from "react-router-dom";
 
-const HeroSection = () => {
+const HeroSection = ({ oligopolyRef, monopolyRef }) => {
+  const navigate = useNavigate();
   // Define staggered fade-in animation properties
   const container = {
     hidden: { opacity: 0 },
@@ -28,6 +30,7 @@ const HeroSection = () => {
     >
       <motion.div
         data-scroll
+        data-scroll-speed="2"
         className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-6 text-center md:text-left"
         initial="hidden"
         animate="visible"
@@ -60,12 +63,18 @@ const HeroSection = () => {
         variants={container}
       >
         <motion.button
+          onClick={() =>
+            oligopolyRef.current.scrollIntoView({ behavior: "smooth" })
+          }
           className="px-6 md:px-8 py-3 md:py-4 bg-transparent border border-white text-white rounded-full hover:bg-gray-700 transition"
           variants={child}
         >
           Oligopoly
         </motion.button>
         <motion.button
+          onClick={() =>
+            monopolyRef.current.scrollIntoView({ behavior: "smooth" })
+          }
           className="px-6 md:px-8 py-3 md:py-4 bg-transparent border border-white text-white rounded-full hover:bg-gray-700 transition"
           variants={child}
         >

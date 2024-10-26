@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import logo from "../assets/components/logo.png";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,7 +11,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 w-full bg-black text-white py-4 px-8 flex justify-between items-center z-10">
-      <img src="path-to-logo" alt="Avishkar Logo" className="w-16 h-16" />
+      <img src={logo} alt="Avishkar Logo" className="w-16 h-16 scale-150" />
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex space-x-8">
