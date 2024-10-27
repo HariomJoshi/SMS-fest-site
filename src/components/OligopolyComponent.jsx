@@ -27,15 +27,6 @@ function OligopolyComponent() {
         </button>
       </div>
 
-      {/* Image Section */}
-      <div className="w-32 h-32 md:w-48 md:h-48 border border-white rounded-lg flex items-center justify-center p-4">
-        <img
-          src="your-image-url"
-          alt="Oligopoly Logo"
-          className="w-full h-full object-contain"
-        />
-      </div>
-
       {/* Social Media Links */}
       <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 mt-4">
         <a

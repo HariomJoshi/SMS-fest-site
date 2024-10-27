@@ -7,6 +7,21 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  height: 100%; /* Make sure the html and body take full height */
+  margin: 0; /* Remove default margin */
+  overflow: hidden; /* Prevent body overflow */
+}
+
+#root {
+  height: 100%; /* Ensure the root div takes full height */
+}
+
+section {
+  min-height: 100vh; /* Ensure sections fill at least the viewport height */
+}
+
 @font-face {
   font-family: "Brusher";
   /* src: url("/path-to-your-font/Brusher.woff2") format("woff2"),
