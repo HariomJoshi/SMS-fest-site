@@ -16,15 +16,15 @@ const Header = ({
     setMenuOpen(!menuOpen);
   };
 
-  const handleScroll = (target) => {
-    if (scrollInstance) {
-      scrollInstance.scrollTo(target, {
-        offset: -100, // adjust as needed for any fixed header height
-        duration: 800,
-      });
-    }
-    toggleMenu(); // close the menu on mobile after navigating
-  };
+  // const handleScroll = (target) => {
+  //   if (scrollInstance) {
+  //     scrollInstance.scrollTo(target, {
+  //       offset: -100, // adjust as needed for any fixed header height
+  //       duration: 800,
+  //     });
+  //   }
+  //   toggleMenu(); // close the menu on mobile after navigating
+  // };
 
   return (
     <header className="fixed top-0 w-full bg-black text-white py-4 px-8 flex justify-between items-center z-10">
@@ -83,31 +83,48 @@ const Header = ({
       {menuOpen && (
         <nav className="absolute top-0 left-0 w-full h-screen bg-black flex flex-col items-center justify-center space-y-8 md:hidden transition-opacity duration-500 opacity-100">
           <span
-            onClick={() => handleScroll("#introduction")}
+            onClick={() => {
+              herosectionRef.current.scrollIntoView({ behavior: "smooth" });
+              toggleMenu();
+            }}
             className="text-xl hover:text-gray-400 cursor-pointer"
           >
             Introduction
           </span>
           <span
-            onClick={() => handleScroll("#monopoly")}
+            onClick={() => {
+              monopolyRef.current.scrollIntoView({ behavior: "smooth" });
+              toggleMenu();
+            }}
             className="text-xl hover:text-gray-400 cursor-pointer"
           >
             Monopoly
           </span>
           <span
-            onClick={() => handleScroll("#events-registration")}
+            onClick={() => {
+              eventsRegtrationRef.current.scrollIntoView({
+                behavior: "smooth",
+              });
+              toggleMenu();
+            }}
             className="text-xl hover:text-gray-400 cursor-pointer"
           >
             Monopoly Registration
           </span>
           <span
-            onClick={() => handleScroll("#oligopoly")}
+            onClick={() => {
+              oligopolyRef.current.scrollIntoView({ behavior: "smooth" });
+              toggleMenu();
+            }}
             className="text-xl hover:text-gray-400 cursor-pointer"
           >
             Oligopoly
           </span>
           <span
-            onClick={() => handleScroll("#oligopoly-registration")}
+            onClick={() => {
+              eventsGridRef.current.scrollIntoView({ behavior: "smooth" });
+              toggleMenu();
+            }}
             className="text-xl hover:text-gray-400 cursor-pointer"
           >
             Oligopoly Registration
