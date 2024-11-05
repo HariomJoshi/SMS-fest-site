@@ -1,0 +1,22 @@
+/* Set the default scroll container */
+[data-scroll-container] {
+  overflow: hidden; /* Prevents the default scroll behavior */
+}
+
+/* Elements with data-scroll attribute */
+[data-scroll] {
+  opacity: 0; /* Start hidden */
+  transform: translateY(50px); /* Start with a slight offset */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Smooth transition */
+}
+
+/* Elements should become visible as they come into view */
+.is-inview[data-scroll] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional: Customize locomotive scroll speed on certain elements */
+[data-scroll-speed] {
+  transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1); /* Custom easing */
+}
