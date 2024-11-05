@@ -14,31 +14,31 @@ function App() {
   const scrollRef = useRef(null);
   const scrollInstance = useRef(null);
 
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollInstance.current = new LocomotiveScroll({
-        el: scrollRef.current,
-        smooth: true,
-        multiplier: 0.6, // Adjust to control scroll speed
-      });
+  // useEffect(() => {
+  //   if (scrollRef.current) {
+  //     scrollInstance.current = new LocomotiveScroll({
+  //       el: scrollRef.current,
+  //       smooth: true,
+  //       multiplier: 0.6, // Adjust to control scroll speed
+  //     });
 
-      // Update locomotive on content resize
-      const handleResize = () => {
-        if (scrollInstance.current) {
-          scrollInstance.current.update();
-        }
-      };
-      window.addEventListener("resize", handleResize);
+  //     // Update locomotive on content resize
+  //     const handleResize = () => {
+  //       if (scrollInstance.current) {
+  //         scrollInstance.current.update();
+  //       }
+  //     };
+  //     window.addEventListener("resize", handleResize);
 
-      // Clean up on component unmount
-      return () => {
-        if (scrollInstance.current) {
-          scrollInstance.current.destroy();
-        }
-        window.removeEventListener("resize", handleResize);
-      };
-    }
-  }, []);
+  //     // Clean up on component unmount
+  //     return () => {
+  //       if (scrollInstance.current) {
+  //         scrollInstance.current.destroy();
+  //       }
+  //       window.removeEventListener("resize", handleResize);
+  //     };
+  //   }
+  // }, []);
 
   const oligopolyRef = useRef(null);
   const monopolyRef = useRef(null);
@@ -55,7 +55,7 @@ function App() {
         oligopolyRef={oligopolyRef}
         eventsGridRef={eventsGridRef}
       />
-      <div className="font-sans" ref={scrollRef} data-scroll-container>
+      <div className="font-sans" ref={scrollRef}>
         <ScrollWrapper>
           <HeroSection herosectionRef={herosectionRef} />
           <MonopolySection
