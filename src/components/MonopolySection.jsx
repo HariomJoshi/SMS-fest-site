@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import image from "../assets/components/monopoly.png";
 
-const MonopolySection = ({ monopolyRef }) => {
+const MonopolySection = ({ monopolyRef, eventsRegtrationRef }) => {
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -110,6 +110,11 @@ const MonopolySection = ({ monopolyRef }) => {
           >
             <img
               src={image}
+              onClick={() => {
+                eventsRegtrationRef.current.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
               alt="Monopoly"
               className="w-48 h-48 sm:w-64 sm:h-64 rounded-lg object-cover shadow-lg"
             />

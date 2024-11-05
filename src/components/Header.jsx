@@ -2,11 +2,28 @@ import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../assets/components/logo.png";
 
-const Header = () => {
+const Header = ({
+  herosectionRef,
+  monopolyRef,
+  eventsRegtrationRef,
+  oligopolyRef,
+  eventsGridRef,
+  scrollInstance,
+}) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const handleScroll = (target) => {
+    if (scrollInstance) {
+      scrollInstance.scrollTo(target, {
+        offset: -100, // adjust as needed for any fixed header height
+        duration: 800,
+      });
+    }
+    toggleMenu(); // close the menu on mobile after navigating
   };
 
   return (
@@ -15,21 +32,46 @@ const Header = () => {
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex space-x-8">
-        <a href="#introduction" className="hover:text-gray-400">
+        <span
+          onClick={() =>
+            herosectionRef.current.scrollIntoView({ behavior: "smooth" })
+          }
+          className="hover:text-gray-400 cursor-pointer"
+        >
           Introduction
-        </a>
-        <a href="#monopoly" className="hover:text-gray-400">
+        </span>
+        <span
+          onClick={() =>
+            monopolyRef.current.scrollIntoView({ behavior: "smooth" })
+          }
+          className="hover:text-gray-400 cursor-pointer"
+        >
           Monopoly
-        </a>
-        <a href="#events-registration" className="hover:text-gray-400">
+        </span>
+        <span
+          onClick={() =>
+            eventsRegtrationRef.current.scrollIntoView({ behavior: "smooth" })
+          }
+          className="hover:text-gray-400 cursor-pointer"
+        >
           Monopoly Registration
-        </a>
-        <a href="#oligopoly" className="hover:text-gray-400">
+        </span>
+        <span
+          onClick={() =>
+            oligopolyRef.current.scrollIntoView({ behavior: "smooth" })
+          }
+          className="hover:text-gray-400 cursor-pointer"
+        >
           Oligopoly
-        </a>
-        <a href="#oligopoly-registration" className="hover:text-gray-400">
+        </span>
+        <span
+          onClick={() =>
+            eventsGridRef.current.scrollIntoView({ behavior: "smooth" })
+          }
+          className="hover:text-gray-400 cursor-pointer"
+        >
           Oligopoly Registration
-        </a>
+        </span>
       </nav>
 
       {/* Hamburger Icon */}
@@ -39,48 +81,37 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {menuOpen && (
-        <nav
-          className={`absolute top-0 left-0 w-full h-screen bg-black flex flex-col items-center justify-center space-y-8 md:hidden
-                      transition-opacity duration-500 ${
-                        menuOpen ? "opacity-100" : "opacity-0"
-                      }
-                    `}
-        >
-          <a
-            href="#introduction"
-            className="text-xl hover:text-gray-400"
-            onClick={toggleMenu}
+        <nav className="absolute top-0 left-0 w-full h-screen bg-black flex flex-col items-center justify-center space-y-8 md:hidden transition-opacity duration-500 opacity-100">
+          <span
+            onClick={() => handleScroll("#introduction")}
+            className="text-xl hover:text-gray-400 cursor-pointer"
           >
             Introduction
-          </a>
-          <a
-            href="#monopoly"
-            className="text-xl hover:text-gray-400"
-            onClick={toggleMenu}
+          </span>
+          <span
+            onClick={() => handleScroll("#monopoly")}
+            className="text-xl hover:text-gray-400 cursor-pointer"
           >
             Monopoly
-          </a>
-          <a
-            href="#events-registration"
-            className="text-xl hover:text-gray-400"
-            onClick={toggleMenu}
+          </span>
+          <span
+            onClick={() => handleScroll("#events-registration")}
+            className="text-xl hover:text-gray-400 cursor-pointer"
           >
             Monopoly Registration
-          </a>
-          <a
-            href="#oligopoly"
-            className="text-xl hover:text-gray-400"
-            onClick={toggleMenu}
+          </span>
+          <span
+            onClick={() => handleScroll("#oligopoly")}
+            className="text-xl hover:text-gray-400 cursor-pointer"
           >
             Oligopoly
-          </a>
-          <a
-            href="#oligopoly-registration"
-            className="text-xl hover:text-gray-400"
-            onClick={toggleMenu}
+          </span>
+          <span
+            onClick={() => handleScroll("#oligopoly-registration")}
+            className="text-xl hover:text-gray-400 cursor-pointer"
           >
             Oligopoly Registration
-          </a>
+          </span>
         </nav>
       )}
     </header>

@@ -5,7 +5,7 @@ import pitchers from "../assets/components/pitchers.mp4";
 import soloLobo from "../assets/components/soloLobo.mp4";
 import tradingS from "../assets/components/tradingS.mp4";
 
-const EventGrid = () => {
+const EventGrid = ({ eventsGridRef }) => {
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -18,6 +18,10 @@ const EventGrid = () => {
         delayChildren: 0.3,
       },
     },
+  };
+
+  const handleNewWindow = (link) => {
+    window.open(link, "_blank", "noopener,noreferrer");
   };
 
   const cardVariants = {
@@ -33,6 +37,7 @@ const EventGrid = () => {
   return (
     <section
       id="oligopoly-registration"
+      ref={eventsGridRef}
       className="bg-black text-white min-h-screen flex flex-col items-center justify-center space-y-6"
     >
       <motion.section
@@ -129,6 +134,7 @@ const EventGrid = () => {
           variants={buttonVariants}
           whileHover="hover"
           whileTap="tap"
+          onClick={() => handleNewWindow("https://forms.gle/5CfPQkJJsJeEL3et6")}
         >
           Register Now!
         </motion.button>

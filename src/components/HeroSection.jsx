@@ -1,10 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import smsImage from "../assets/components/smsImg.jpeg";
 import mnnitImage from "../assets/components/mnnitImage.jpg";
 import { useNavigate } from "react-router-dom";
 
-const HeroSection = ({ oligopolyRef, monopolyRef }) => {
+const HeroSection = ({ herosectionRef }) => {
   const navigate = useNavigate();
   // Define staggered fade-in animation properties
   const container = {
@@ -23,9 +23,14 @@ const HeroSection = ({ oligopolyRef, monopolyRef }) => {
     visible: { opacity: 1, y: 0 }, // Move to original position
   };
 
+  const handleNewWindow = (link) => {
+    window.open(link, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <section
       id="introduction"
+      ref={herosectionRef}
       className="flex flex-col items-center justify-center min-h-screen bg-black text-white pt-20 md:pt-32 px-4 space-y-6 md:space-y-8"
     >
       <motion.div
@@ -63,18 +68,18 @@ const HeroSection = ({ oligopolyRef, monopolyRef }) => {
         variants={container}
       >
         <motion.button
-          onClick={() =>
-            oligopolyRef.current.scrollIntoView({ behavior: "smooth" })
-          }
+          onClick={() => handleNewWindow("https://forms.gle/5CfPQkJJsJeEL3et6")}
           className="px-6 md:px-8 py-3 md:py-4 bg-transparent border border-white text-white rounded-full hover:bg-gray-700 transition"
           variants={child}
         >
           Oligopoly
         </motion.button>
         <motion.button
-          onClick={() =>
-            monopolyRef.current.scrollIntoView({ behavior: "smooth" })
-          }
+          onClick={() => {
+            handleNewWindow(
+              "https://docs.google.com/forms/d/e/1FAIpQLScHy6Ik0sMrGZwJkNEV75bY-wC4bpDUV8cWmZyQhG5jO_pHeA/viewform?usp=sf_link"
+            );
+          }}
           className="px-6 md:px-8 py-3 md:py-4 bg-transparent border border-white text-white rounded-full hover:bg-gray-700 transition"
           variants={child}
         >

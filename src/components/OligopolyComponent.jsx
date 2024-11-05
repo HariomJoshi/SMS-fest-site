@@ -1,34 +1,71 @@
 import React from "react";
+import { motion } from "framer-motion";
 
-function OligopolyComponent() {
+const OligopolyComponent = ({ oligopolyRef, eventsGridRef }) => {
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        when: "beforeChildren",
+        staggerChildren: 0.5,
+      },
+    },
+  };
+
+  const childVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
+
   return (
-    <div
+    <motion.div
       id="oligopoly"
+      ref={oligopolyRef}
       className="bg-black text-white min-h-screen flex flex-col items-center justify-center text-center space-y-8 py-10 px-4"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.5 }} // Adjusted to trigger when 50% in view
+      variants={containerVariants}
     >
       {/* Title Section */}
-      <div className="relative text-5xl md:text-6xl font-bold flex items-center justify-center">
+      <motion.div
+        className="relative text-5xl md:text-6xl font-bold flex items-center justify-center"
+        variants={childVariants}
+      >
         <h1 className="text-white">Oligopoly</h1>
         <span className="text-red-500 text-6xl md:text-7xl font-bold absolute right-[-30px] top-[-30px]">
           .
         </span>
-      </div>
+      </motion.div>
 
       {/* Subtitle */}
-      <p className="text-gray-400 italic text-lg md:text-xl max-w-3xl mx-auto px-4">
+      <motion.p
+        className="text-gray-400 italic text-lg md:text-xl max-w-3xl mx-auto px-4"
+        variants={childVariants}
+      >
         "Show your own business acumen to the world around you and the
         transition that takes you from a novice to a leader."
-      </p>
+      </motion.p>
 
       {/* Events Button */}
-      <div className="relative">
-        <button className="bg-red-500 text-white px-6 py-2 rounded-full text-lg hover:bg-red-400 active:scale-95 transform transition duration-200">
+      <motion.div className="relative" variants={childVariants}>
+        <button
+          onClick={() =>
+            eventsGridRef.current.scrollIntoView({ behavior: "smooth" })
+          }
+          className="bg-red-500 text-white px-6 py-2 rounded-full text-lg hover:bg-red-400 active:scale-95 transform transition duration-200"
+        >
           EVENTS
         </button>
-      </div>
+      </motion.div>
 
       {/* Social Media Links */}
-      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 mt-4">
+      <motion.div
+        className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 mt-4"
+        variants={childVariants}
+      >
         <a
           href="https://instagram.com/Oligopoly_MNNIT"
           target="_blank"
@@ -47,9 +84,9 @@ function OligopolyComponent() {
           <i className="fab fa-facebook"></i>
           <span>@Oligopoly_MNNIT</span>
         </a>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
-}
+};
 
 export default OligopolyComponent;

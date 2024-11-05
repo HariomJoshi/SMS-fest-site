@@ -6,7 +6,7 @@ import stallMart from "../assets/components/stallMart.jpeg";
 import navchar from "../assets/components/navchar.mp4";
 import netriva from "../assets/components/netriva.mp4";
 
-const EventsRegistrationSection = () => {
+const EventsRegistrationSection = ({ eventsRegtrationRef }) => {
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -21,6 +21,9 @@ const EventsRegistrationSection = () => {
     },
   };
 
+  const handleNewWindow = (link) => {
+    window.open(link, "_blank", "noopener,noreferrer");
+  };
   const childVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }, // Slow transition for child elements
@@ -29,6 +32,7 @@ const EventsRegistrationSection = () => {
   return (
     <section
       id="events-registration"
+      ref={eventsRegtrationRef}
       className="flex flex-col items-center justify-center min-h-screen bg-black text-white py-20 px-6"
     >
       <motion.section
@@ -128,6 +132,11 @@ const EventsRegistrationSection = () => {
         <motion.button
           className="mt-8 px-6 py-3 bg-orange-500 text-black font-semibold rounded-lg shadow-md hover:bg-orange-600"
           variants={childVariants}
+          onClick={() => {
+            handleNewWindow(
+              "https://docs.google.com/forms/d/e/1FAIpQLScHy6Ik0sMrGZwJkNEV75bY-wC4bpDUV8cWmZyQhG5jO_pHeA/viewform?usp=sf_link"
+            );
+          }}
         >
           REGISTRATION LINK
         </motion.button>

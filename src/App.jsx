@@ -9,21 +9,56 @@ import OligopolyComponent from "./components/OligopolyComponent";
 import EventGrid from "./components/EventGrid";
 import useSmoothScroll from "./utils/useSmoothScroll";
 import ScrollWrapper from "./utils/ScrollWrapper";
-import { useRef } from "react";
+import LocomotiveScroll from "locomotive-scroll";
+import { useRef, useEffect } from "react";
 
 function App() {
-  useSmoothScroll();
+  const scrollRef = useRef(null);
+  const scrollInstance = useRef(null);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollInstance.current = new LocomotiveScroll({
+        el: scrollRef.current,
+        smooth: true,
+      });
+
+      // Clean up on component unmount
+      return () => {
+        if (scrollInstance.current) {
+          scrollInstance.current.destroy();
+        }
+      };
+    }
+  }, []);
+
+  // useSmoothScroll();
   const oligopolyRef = useRef(null);
   const monopolyRef = useRef(null);
+  const herosectionRef = useRef(null);
+  const eventsRegtrationRef = useRef(null);
+  const eventsGridRef = useRef(null);
   return (
-    <div className="font-sans">
-      <Header />
+    <div className="font-sans" ref={scrollRef} data-scroll-container>
+      <Header
+        herosectionRef={herosectionRef}
+        monopolyRef={monopolyRef}
+        eventsRegtrationRef={eventsRegtrationRef}
+        oligopolyRef={oligopolyRef}
+        eventsGridRef={eventsGridRef}
+      />
       <ScrollWrapper>
-        <HeroSection oligopolyRef={oligopolyRef} monopolyRef={monopolyRef} />
-        <MonopolySection monopolyRef={monopolyRef} />
-        <EventsRegistrationSection />
-        <OligopolyComponent oligopolyRef={oligopolyRef} />
-        <EventGrid />
+        <HeroSection herosectionRef={herosectionRef} />
+        <MonopolySection
+          monopolyRef={monopolyRef}
+          eventsRegtrationRef={eventsRegtrationRef}
+        />
+        <EventsRegistrationSection eventsRegtrationRef={eventsRegtrationRef} />
+        <OligopolyComponent
+          oligopolyRef={oligopolyRef}
+          eventsGridRef={eventsGridRef}
+        />
+        <EventGrid eventsGridRef={eventsGridRef} />
         <Footer />
       </ScrollWrapper>
     </div>
