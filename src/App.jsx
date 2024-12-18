@@ -14,32 +14,6 @@ function App() {
   const scrollRef = useRef(null);
   const scrollInstance = useRef(null);
 
-  // useEffect(() => {
-  //   if (scrollRef.current) {
-  //     scrollInstance.current = new LocomotiveScroll({
-  //       el: scrollRef.current,
-  //       smooth: true,
-  //       multiplier: 0.6, // Adjust to control scroll speed
-  //     });
-
-  //     // Update locomotive on content resize
-  //     const handleResize = () => {
-  //       if (scrollInstance.current) {
-  //         scrollInstance.current.update();
-  //       }
-  //     };
-  //     window.addEventListener("resize", handleResize);
-
-  //     // Clean up on component unmount
-  //     return () => {
-  //       if (scrollInstance.current) {
-  //         scrollInstance.current.destroy();
-  //       }
-  //       window.removeEventListener("resize", handleResize);
-  //     };
-  //   }
-  // }, []);
-
   const oligopolyRef = useRef(null);
   const monopolyRef = useRef(null);
   const herosectionRef = useRef(null);
@@ -47,7 +21,7 @@ function App() {
   const eventsGridRef = useRef(null);
 
   return (
-    <div className="App">
+    <div>
       <Header
         herosectionRef={herosectionRef}
         monopolyRef={monopolyRef}
