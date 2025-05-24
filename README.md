@@ -1,6 +1,6 @@
 # Official Website for School of Management Studies Festival
 
-![Festival Banner](https://your-image-link.com) <!-- Add a relevant banner image URL here -->
+![Festival Banner](https://github.com/HariomJoshi/SMS-fest-site/blob/main/src/assets/oligopoly.png) <!-- Add a relevant banner image URL here -->
 
 ## Overview
 
