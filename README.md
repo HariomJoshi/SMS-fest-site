@@ -66,7 +66,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - Thanks to the School of Management Studies, MNNIT Allahabad for their support.
-
----
-
-Feel free to modify any sections to better suit your project!
