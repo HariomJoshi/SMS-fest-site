@@ -1,7 +1,3 @@
-Here’s a README template for your project:
-
----
-
 # Official Website for School of Management Studies Festival
 
 ![Festival Banner](https://your-image-link.com) <!-- Add a relevant banner image URL here -->
