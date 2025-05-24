@@ -17,10 +17,6 @@ This project is the official website for the festival of the **School of Managem
   - Tailwind CSS
   - Framer Motion (for animations)
 
-- **Backend:**
-  - Express.js (if applicable)
-  - PostgreSQL (if applicable)
-
 - **Hosting:**
   - Vercel
 
@@ -74,7 +70,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - Thanks to the School of Management Studies, MNNIT Allahabad for their support.
-- Special thanks to the contributors who helped make this project a success.
 
 ---
 
